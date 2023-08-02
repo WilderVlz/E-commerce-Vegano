@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #456B42;
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "./themes/typography.scss";
+@import "./themes/variables.scss";
+
+.btn-success{
+  background-color: var(--color-green-1);
+}

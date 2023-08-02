@@ -1,0 +1,20 @@
+.btn-lgp{
+  width: 200px;
+}
+.icon-end{
+  float: right;
+  color: gray;
+  cursor: pointer;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .delivery-container{
+    padding-left: 70px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .delivery-container {
+    padding-left: 150px;
+  }
+}

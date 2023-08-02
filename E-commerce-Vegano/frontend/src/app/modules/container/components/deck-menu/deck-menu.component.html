@@ -1,0 +1,21 @@
+<ng-container *ngIf="renderDeck">
+  <h2 class="deck-title">{{ menu.category }}</h2>
+
+  <!-- mobile-->
+  <div class="d-block d-md-none">
+    <app-card-plate
+      (click)="selectedPlate(plate)"
+      *ngFor="let plate of plates; let i = index"
+      [plate]="plate"
+    ></app-card-plate>
+  </div>
+  <!-- desktop-->
+  <div class="d-none d-md-block">
+    <app-card-modal-plate-details
+      *ngFor="let plate of plates; let i = index"
+      [plate]="plate"
+    ></app-card-modal-plate-details>
+  </div>
+</ng-container>
+
+

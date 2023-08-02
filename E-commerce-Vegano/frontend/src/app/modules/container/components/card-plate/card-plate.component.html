@@ -1,0 +1,32 @@
+<div class="card  rounded border">
+  <div class="row g-0">
+    <div [style.background-image]="'url(assets/img/plates/' + plate.urlImagen + ')'"
+         class="col-4 bg-dark rounded-start  d-flex align-items-center img-bg">
+    </div>
+    <div class="col-8">
+      <div class="card-body h-100 d-flex flex-column  flex-grow-1">
+        <div class="d-flex justify-content-between  d-md-block flex-wrap">
+          <h6 class="card-title">{{plate.nombre| titlecase}}</h6>
+          <h6 class="card-price">{{plate.precio|currency}}</h6>
+        </div>
+        <div class="d-flex justify-content-between flex-row flex-md-column my-1">
+          <p
+            class=" d-block d-md-none d-lg-none card-text "> {{ plate.descripcion| slice:0:50 }}{{ plate.descripcion.length > 50 ? ' ...' : '' }}</p>
+          <p
+            class=" d-none d-md-block d-lg-none  card-text">{{ plate.descripcion| slice:0:70 }}{{ plate.descripcion.length > 70 ? ' ...' : '' }}</p>
+
+          <p
+            class=" d-none d-lg-block card-text">{{ plate.descripcion| slice:0:90 }}{{ plate.descripcion.length > 90 ? ' ...' : '' }}</p>
+        </div>
+        <div class="align-self-end">
+          <button (click)="addCart()" *ngIf="plate.stock>0" class="btn btn-outline-primary">
+            <fa-icon [icon]="faPlus"></fa-icon>
+          </button>
+          <button *ngIf="plate.stock<1" class="btn btn-outline-danger">
+            sin stock
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

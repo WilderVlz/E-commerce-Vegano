@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+  <header class="modal-header justify-content-start">
+    <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close mx-0" type="button"></button>
+    <h4 class="modal-title mx-3" id="modal-basic-title">{{plate.nombre}}</h4>
+  </header>
+  <main class="modal-body ">
+    <section class="d-flex justify-content-center img-container">
+      <img [src]="'assets/img/plates/'+plate.urlImagen" alt="{{plate.nombre}}" class="img-fluid">
+    </section>
+    <h5 class="my-2">{{plate.precio|currency}}</h5>
+
+    <section class="d-flex justify-content-between align-items-center">
+      <div>
+        <app-badge [isSuccess]="true" [textSuccess]="'Vegetariano'" [textWarning]="''"/>
+        <app-badge [isSuccess]="plate.vegano" [textSuccess]="'Vegano'" [textWarning]="'No vegano'"/>
+        <app-badge [isSuccess]="plate.sinTACC" [textSuccess]="'Sin Tacc'" [textWarning]="'Contiene TACC'"/>
+        <app-badge [isDanger]="plate.stock===0" [isSuccess]="plate.stock>10"
+                   [textDanger]="'No stock'" [textSuccess]="'En stock'"
+                   [textWarning]="'Ultimos platos'"/>
+      </div>
+      <div>
+        <app-star-rating [rating]="plate.calificacion"/>
+      </div>
+    </section>
+    <p class="text-muted text-end"><small>En stock:{{plate.stock}}</small></p>
+    <p class="my-3 ">{{plate.descripcion}}</p>
+
+  </main>
+  <div class="modal-footer justify-content-sm-between">
+    <app-button-counter (valueChange)="onCountChange($event)" [maxValue]="plate.stock" [minValue]="1" [value]="1"/>
+
+    <div>
+      <button (click)="addCart()" class="btn btn-primary" id="button">Agregar a mi pedido</button>
+    </div>
+  </div>
+</ng-template>
+
+<app-card-plate (click)="open(content)" [plate]="plate"/>
+

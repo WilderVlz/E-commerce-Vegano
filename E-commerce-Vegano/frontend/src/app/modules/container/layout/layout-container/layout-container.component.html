@@ -1,0 +1,29 @@
+<nav class="header navbar navbar-expand-md">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img alt="Vgno" class="logo-navbar" src="/assets/img/logos/logo-svg.svg">
+    </a>
+    <button (click)="toggleMenu()" class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="mostrarElementos" [ngClass]="{ 'show': isCollapsed }" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0 justify-content-end">
+        <li *ngFor="let item of menuItems()" [routerLink]="[item.route]" class="nav-item ms-md-3"
+            routerLinkActive="active">
+          {{item.title}}
+        </li>
+      </ul>
+      <!--button class="btn btn-secondary ms-lg-4" type="button">Iniciar sesión</button-->
+      <!--app-login-modal></app-login-modal-->
+      <button (click)="login()" class="btn btn-login ms-md-4" type="button">
+        Iniciar sesión
+      </button>
+      <app-button-modal-order-details/>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+

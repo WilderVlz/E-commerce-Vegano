@@ -1,0 +1,27 @@
+<div class="card rounded border-black">
+  <div class="row g-0">
+    <div [style.background-image]="'url(assets/img/plates/'+ getPlate().urlImagen + ')'"
+         class="col-4 bg-dark rounded-start  d-flex align-items-center img-bg">
+    </div>
+    <div class="col-8 card-body align-self-center">
+      <div class="row">
+        <div class="col-6 align-self-center">
+          <h6 class="card-title text-truncate">{{getPlate().nombre| titlecase}}</h6>
+          <h6 class="card-price"><small>{{getPlate().precio|currency}}</small></h6>
+        </div>
+        <div class="col-6 align-self-center text-end">
+          <h6 class="card-price">{{count * getPlate().precio|currency}}</h6>
+
+          <app-button-counter (valueChange)="onCountChange($event)"
+                              [deleteIcon]="true"
+                              [maxValue]="getPlate().stock"
+                              [minValue]="0"
+                              [value]="order.count"/>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

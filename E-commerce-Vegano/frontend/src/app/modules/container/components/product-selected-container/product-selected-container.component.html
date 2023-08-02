@@ -1,0 +1,27 @@
+<div class="product-selected-container d-md-none"    >
+  <div class="row product-selected " >
+    <div class="col-3">
+      <div class="img-container">
+        <img src="assets/img/plates/{{getPlate().urlImagen }}"  class="img-fluid rounded-start">
+      </div>
+    </div>
+    <div class="col-6 no-padding">
+      <p class="text-product-selected text-product-selected-md">
+        {{ getPlate().nombre}}
+      </p>
+      <div class="input-group">
+        <app-button-counter (valueChange)="onCountChange($event)"
+        [deleteIcon]="true"
+        [maxValue]=" getPlate().stock"
+        [minValue]="0"
+        [value]="order.count"/>
+      </div>
+    </div>
+    <div class="col-3 col-md">
+      <p class="text-product-selected text-end text-left">
+        {{ getPlate().precio*count | currency }}
+      </p>
+    </div>
+  </div>
+  <hr />
+</div>

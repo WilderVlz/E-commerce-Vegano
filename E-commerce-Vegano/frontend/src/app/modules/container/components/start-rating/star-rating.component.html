@@ -1,0 +1,6 @@
+<div class="star-rating">
+  <small>
+    <fa-icon *ngFor="let star of stars"
+             [icon]=" star.filled? faStarFilled : (star.halfFilled ?  faStarHalfAlt: faStarNoFilled)"></fa-icon>
+  </small>
+</div>

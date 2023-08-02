@@ -1,0 +1,61 @@
+<!--TODO: Refactor-> Componente spinner-->
+<div *ngIf="isLoading" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+<main *ngIf="!isLoading" class="container mt-5">
+  <section class="d-block d-sm-none row align-items-center mt-3">
+    <div class="col-1">
+      <a class="btn m-0 border-0" routerLink="''">
+        <fa-icon [icon]="faChevronLeft"/>
+      </a>
+    </div>
+    <div class="col-10">
+      <h1 class="m-0 text-center d-inline-block w-100">{{menuService.tipoMenu}}</h1>
+    </div>
+  </section>
+
+
+  <section class="row mt-4">
+    <div class="d-none d-md-block col-md-4"></div>
+    <div class="col-12 col-md-7">
+      <div class="d-block d-md-flex justify-content-between align-content-center">
+        <div class="flex-grow-1">
+          <app-input-search-menu/>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-md-1"></div>
+  </section>
+
+  <section class="row mt-3">
+    <div class="col-12 col-md-3">
+      <app-group-button-filter-menu [filtersCategories]="menuService.getCategories()"
+                                    [filtersMenu]="menuService.getTipoMenu()"
+                                    [filtersType]="menuService.getTipoMenu()"
+      />
+    </div>
+    <section class="col-12 col-md-9">
+      <div class="d-block">
+        <app-deck-purchase-order/>
+      </div>
+      <div class="col-12 col-md-10">
+        <div *ngFor="let menu of menuService.createMenuAll()">
+          <app-deck-menu [menu]="menu"/>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+
+<footer [class.d-none]="disabledFooter()"
+        class="menu-footer sticky-bottom bg-light align-content-center d-md-none">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <a class="btn btn-dark" routerLink="/container/shopping">Ver mi pedido</a>
+  </div>
+</footer>

@@ -1,0 +1,32 @@
+<div class="order-summary-container">
+  <h1 class="title-page mt-3 mb-3">Resumen del Pedido</h1>
+  <hr />
+  <div class="row mb-2">
+    <div class="col">
+      <h2 class="subtitle-page">Subtotal</h2>
+    </div>
+    <div class="col text-end">
+      <h2 class="subtitle-page">{{ shoppingCart.total| currency }}</h2>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col">
+      <h2 class="subtitle-page">Envio</h2>
+    </div>
+    <div class="col text-end">
+      <h2 class="subtitle-page">{{  envio | currency }}</h2>
+    </div>
+  </div>
+
+  <hr />
+  <div class="row mb-2">
+    <div class="col">
+      <h2 class="subtitle-page-bold">Total</h2>
+    </div>
+    <div class="col text-end">
+      <h2 class="subtitle-page-bold">
+        {{  total | currency }}
+      </h2>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="carousel d-block d-md-none">
+
+  <app-button-filter-menu
+    (click)="toggleType(name)"
+    *ngFor="let name of filtersType; let i = index"
+    [isActive]="menu===name"
+    [name]="name"
+    class="btn-primary"
+  />
+
+</div>
+
+<!--desktop-->
+<div class="d-none d-md-block my-4">
+  <div class="d-flex flex-column border border-black">
+
+    <app-button-filter-menu
+      (click)="toggleType(name)"
+      *ngFor="let name of filtersType; let i = index"
+      [isActive]="menu===name"
+      [name]="name"
+      class="border-bottom "
+    />
+
+    <!-- Filtros por categoría -->
+
+    <app-button-filter-menu
+      (click)="toggleCategory(name)"
+      *ngFor="let name of filtersCategories; let i = index"
+      [@expandCollapse]="isExpanded ? 'open' : 'closed'"
+      [isActive]="filter.activateFilterByCategory.includes(name)"
+      [name]="name"
+      [secondary]="true"
+      class="border-bottom "
+    ></app-button-filter-menu>
+
+    <app-button-filter-menu
+      (click)="toggleSinTacc()"
+      [@expandCollapse]="isExpanded ? 'open' : 'closed'"
+      [isActive]="filter.activateFilterSinTacc"
+      [name]="'Sin Tacc'"
+      [secondary]="true"
+      class="border-bottom "
+    ></app-button-filter-menu>
+    <app-button-filter-menu
+      (click)="toggleVegano()"
+      [@expandCollapse]="isExpanded ? 'open' : 'closed'"
+      [isActive]="filter.activateFilterVegano"
+      [name]="'Vegano'"
+      [secondary]="true"
+    ></app-button-filter-menu>
+  </div>
+</div>
+
+

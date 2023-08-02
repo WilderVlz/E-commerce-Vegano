@@ -1,0 +1,12 @@
+.deck-title {
+  margin: 28px 0 15px 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+
+@media screen and (min-width: 768px) {
+  .deck-title {
+    color: #6C757D;
+  }
+}

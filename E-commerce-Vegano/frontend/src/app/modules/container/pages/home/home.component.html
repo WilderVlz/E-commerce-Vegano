@@ -1,0 +1,82 @@
+<div class="container-fluid p-0 d-none d-sm-block">
+  <div class="row">
+    <div class="col bg-image">
+      <div class="bg-color d-flex justify-content-center align-items-center flex-column">
+
+
+        <h1>Delicias veganas y vegetarianas</h1>
+        <h4>Tu opción saludable y sabrosa a domicilio</h4>
+
+        <div class="mt-5 mb-3 input-search">
+          <h5>Que te gustaría comer?</h5>
+          <div class="input-group mt-2 mb-4">
+            <input [formControl]="homeSearch" class="form-control" id="input-search-home" placeholder="Descubre los mejores platos"
+                   type="message">
+            <button class="btn btn-success input-group-text group-text-desktop" type="button">
+              <fa-icon [icon]="faMagnifyingGlass" class="me-2"></fa-icon>
+              Buscar
+            </button>
+          </div>
+        </div>
+
+        <h6>
+          o conoce nuestro <span class="router-menu" routerLink="menuName"
+                                 routerLinkActive="is-active">menú completo</span>
+        </h6>
+
+        <!--div class="col-12 freepik-creditos mb-1 me-2">
+          <a target="_blank" href="https://www.freepik.es/foto-gratis/plato-tazon-fuente-buda-verduras-legumbres-vista-superior_13807905.htm#query=comida%20vegana&position=0&from_view=search&track=ais">Imagen de jcomp</a> en Freepik
+        </div-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-sm-none input-group mt-4 mb-4">
+    <input [formControl]="homeSearch" class="form-control input-text-mobile" placeholder="¿Qué estas buscando?"
+           type="message">
+    <span class="input-group-text group-text-mobile">
+      <fa-icon [icon]="faMagnifyingGlass" class="me-2"></fa-icon>
+    </span>
+  </div>
+
+  <ngb-carousel *ngIf="slides.length > 0" class="d-sm-none home-carousel">
+    <ng-template *ngFor="let slide of slides" class="home-slide" ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="slide.imageUrl" alt="Random first slide" class="home-slide-image"/>
+      </div>
+      <div class="carousel-caption">
+        <h3>{{ slide.title }}</h3>
+        <p>{{ slide.description }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <h4 class="d-none d-sm-block mt-5 mb-4">Deliciosas opciones vegetarianas para ti</h4>
+
+  <h5 class="d-sm-none mt-4 mb-4">Las mejores opciones para ti</h5>
+
+  <div *ngIf="plateList.length > 0; else elseList" class="row">
+    <div *ngFor="let plate of plateList" class="col-6 col-md-4 col-lg-3 mb-4">
+      <div (click)="selectedPlate(plate)" class="card">
+        <img [src]="'assets/img/plates/' + plate.urlImagen" alt="plato" class="card-img-plate">
+        <div class="card-body card-body-plate">
+          <h5 class="card-title plate-name">{{ plate.nombre }}</h5>
+          <p class="card-text plate-description"
+          >
+            {{ plate.descripcion }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #elseList>
+    <div class="alert alert-primary" role="alert">
+      No hay platos disponibles para mostrar.
+    </div>
+  </ng-template>
+
+</div>
+

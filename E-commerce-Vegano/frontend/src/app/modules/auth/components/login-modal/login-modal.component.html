@@ -1,0 +1,181 @@
+<div class="modal-header text-center">
+  <h4 class="modal-title ms-auto" id="modal-basic-title">
+    {{ isLogin?"Iniciar Sesión": "Crea tu cuenta" }}
+  </h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="container" *ngIf="isLogin; else formRegister">
+    <div class="d-flex justify-content-evenly mb-3">
+      <div #googleButton></div>
+      <button class="btn facebook-button" (click)="signInWithFB()">
+        <fa-icon class="fb-icon" [icon]="faFacebook"></fa-icon> Acceder con Facebook
+      </button>
+      <div>
+      </div>
+    </div>
+    <div class="row">
+
+      <span class="text-center">o ingresa con tu email</span>
+
+      <div class="col-12">
+        <form [formGroup]="loginForm">
+          <div class="col-12 mt-2 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </span>
+              <input type="message" id="usuario" formControlName="usuario" class="form-control" placeholder="usuario">
+            </div>
+            <span
+                *ngIf="loginForm.get('usuario')?.touched"
+                messageError
+                [errors]="loginForm.get('usuario')?.errors"
+                fieldName="usuario"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </span>
+              <input type="password" id="contrasena" formControlName="contrasena" class="form-control" placeholder="contraseña">
+            </div>
+            <span
+                *ngIf="loginForm.get('contrasena')?.touched"
+                messageError
+                [errors]="loginForm.get('contrasena')?.errors"
+                fieldName="contraseña"
+                >
+            </span>
+          </div>
+
+        </form>
+      </div>
+
+      <span class="text-center">
+        <a href="" >¿Olvidaste tu contraseña?</a>
+      </span>
+
+      <span class="text-center">¿No tienes cuenta? <button class="changeToRegister" (click)="changeModal()">Regístrate</button></span>
+    </div>
+  </div>
+
+  <ng-template #formRegister>
+    <div class="container">
+      <div class="col-12">
+        <form [formGroup]="registerForm">
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </span>
+              <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="nombre">
+            </div>
+            <span
+                *ngIf="registerForm.get('nombre')?.touched"
+                messageError
+                [errors]="registerForm.get('nombre')?.errors"
+                fieldName="nombre"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faUser"></fa-icon>
+              </span>
+              <input type="text" id="apellido" formControlName="apellido" class="form-control" placeholder="apellido">
+            </div>
+            <span
+                *ngIf="registerForm.get('apellido')?.touched"
+                messageError
+                [errors]="registerForm.get('apellido')?.errors"
+                fieldName="apellido"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faPhone"></fa-icon>
+              </span>
+              <input type="text" id="numeroCelular" formControlName="numeroCelular" class="form-control" placeholder="telefono">
+            </div>
+            <span
+                *ngIf="registerForm.get('numeroCelular')?.touched"
+                messageError
+                [errors]="registerForm.get('numeroCelular')?.errors"
+                fieldName="telefono"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faEnvelope"></fa-icon>
+              </span>
+              <input type="email" id="email" formControlName="email" class="form-control" placeholder="email">
+            </div>
+            <span
+                *ngIf="registerForm.get('email')?.touched"
+                messageError
+                [errors]="registerForm.get('email')?.errors"
+                fieldName="email"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </span>
+              <input type="password" id="contrasena" formControlName="contrasena" class="form-control" placeholder="contraseña">
+            </div>
+            <span
+                *ngIf="registerForm.get('contrasena')?.touched"
+                messageError
+                [errors]="registerForm.get('contrasena')?.errors"
+                fieldName="contraseña"
+                >
+            </span>
+          </div>
+
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <fa-icon [icon]="faLock"></fa-icon>
+              </span>
+              <input type="password" id="contrasena2" formControlName="contrasena2" class="form-control" placeholder="Confirmar contraseña">
+            </div>
+            <span
+                *ngIf="registerForm.get('contrasena2')?.touched"
+                messageError
+                [errors]="registerForm.get('contrasena2')?.errors"
+                fieldName="contraseña"
+                >
+            </span>
+          </div>
+
+        </form>
+
+      </div>
+      <div class="row">
+        <span class="text-center">¿Ya tienes cuenta? <button class="changeToRegister" (click)="changeModal()">Inicia sesión</button></span>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+<div class="modal-footer justify-content-center">
+  <button [disabled]="isLogin?loginForm.invalid:registerForm.invalid" type="button"
+    (click)="login()" class="btn btn-success btn-auth">
+    {{ isLogin?"Iniciar sesión":"Crear cuenta" }}
+  </button>
+</div>

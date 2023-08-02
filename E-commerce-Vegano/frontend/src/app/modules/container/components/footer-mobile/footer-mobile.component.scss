@@ -1,0 +1,21 @@
+.footer{
+  display: flex;
+width: 100%;
+padding: 30px;
+left: 0;
+ .btn {
+  padding: 10px 0px;
+  font-weight: bolder;
+}
+
+.btn-success{
+  background-color: var(--color-green-1);
+}
+justify-content: center;
+align-items: center;
+background: #FFF;
+box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.40);
+button{
+  width: 50%;
+}
+}

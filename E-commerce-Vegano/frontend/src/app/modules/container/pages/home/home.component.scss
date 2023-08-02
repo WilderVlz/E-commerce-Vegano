@@ -1,0 +1,154 @@
+.bg-image{
+  background-image: url('../../../../../assets/img/home/banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+  color: white;
+  opacity: 1.0;
+  //background-color: rgba($color: #000000, $alpha: 0.9);
+
+}
+
+.bg-color{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($color: #000000, $alpha: 0);
+}
+
+.router-menu {
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.group-text-desktop{
+  background-color: #456B42;
+  color: white;
+  border-color: #456B42;
+}
+
+.freepik-creditos{
+  position: absolute;
+  bottom: 0;
+  text-align: end;
+}
+
+.group-text-mobile{
+  border-left: none;
+  background-color: white;
+}
+
+.input-text-mobile{
+  border-right: none;
+}
+
+#input-search-home:focus{
+  border-color: #456B42;
+  box-shadow: 0 0 0 0.25rem rgba($color: #000000, $alpha: 0.25);
+}
+
+.card {
+  img {
+    border-radius: 0.375rem 0.375rem 0 0;
+  }
+}
+
+.plate-name {
+  font-size: 16px;
+}
+
+.plate-description {
+  font-size: 14px;
+}
+
+.home-slide {
+  height: 250px;
+}
+
+.home-slide-image {
+  width: 100%;
+}
+
+
+.card-img-plate {
+  //max-height: 150px;
+  height: 130px;
+}
+
+.home-carousel {
+
+  img {
+    height: 250px;
+  }
+}
+
+.plate-description{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.plate-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  //min-height: 60px;
+  //margin: 0;
+  //justify-content: center;
+}
+
+.card-body-plate {
+  height: 141px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+
+  .card-img-plate {
+    height: 150px;
+  }
+
+  .card-body-plate {
+    height: 158px;
+  }
+
+  .input-search{
+    width: 450px;
+  }
+
+  .plate-name {
+    font-size: 20px;
+  }
+
+  .plate-description {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-img-plate {
+    height: 150px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .input-search{
+    width: 600px;
+  }
+
+  .card-img-plate {
+    height: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-img-plate {
+    height: 180px;
+  }
+}

@@ -1,0 +1,77 @@
+.payment-method-container {
+  width: 100%;
+  height: 100%;
+  min-height: 80vh;
+  padding: 28px 2px 28px 1px;
+
+  .fa-lg {
+    font-size: 24px;
+  }
+  .icon-back {
+    cursor: pointer;
+  }
+  .form-check {
+    margin-top: 12px;
+  }
+  .form-check-label {
+    color: #343a40;
+
+    line-height: 28px;
+  }
+}
+.icon-end{
+  float: right;
+  color: gray;
+  cursor: pointer;
+}
+.btn-lgp{
+  width: 200px;
+}
+
+.imgCard{
+  margin-left: 10px;
+}
+.order-summary{
+max-width: 400px;
+margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .payment-method-container {
+    padding-top: 10px;
+  }
+
+
+
+
+}
+.modal-body{
+  .title-page{
+    color: #6C757D!important;
+    font-weight: 700!important;
+
+  }
+  .subtitle-page{
+    color: #6C757D!important;
+    font-weight: 500;
+  }
+}
+.modal-footer {
+  justify-content: center;
+  button{
+    width: 200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .Method-container {
+    padding: 0 70px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .Method-container {
+    padding: 0 150px;
+  }
+}

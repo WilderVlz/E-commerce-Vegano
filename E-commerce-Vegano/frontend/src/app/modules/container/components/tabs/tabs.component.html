@@ -1,0 +1,11 @@
+<ul class="nav nav-pills ">
+  <div  class="tab-nav"*ngFor="let item of menu">
+    <li class="nav-item tab">
+      <button class="nav-link" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }" routerLink="/container/{{item.path}}" disabled> <img *ngIf="state=='1'&&item.path=='shopping'||state2=='2'&&item.path=='pay'" src="assets/icons/success.svg" alt=""> {{item.title}}</button>
+    </li><div class="line" *ngIf="item.path!=='confirm'"> </div>
+  </div>
+
+
+
+</ul>

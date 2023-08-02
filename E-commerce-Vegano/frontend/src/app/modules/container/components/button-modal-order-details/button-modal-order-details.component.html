@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+  <header class="modal-header justify-content-start">
+    <h4 class="modal-title" id="modal-basic-title">Tu pedido</h4>
+    <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close justify-content-end"
+            type="button"></button>
+  </header>
+  <main class="modal-body vh-100">
+
+    <div *ngIf="shoppingCart.cart.orders.length===0" class="text-dark-emphasis">
+      <p> No has seleccionado comidas...</p>
+      <p>Hambre + Opciones = ¡Estamos listos para que pidas y sigas disfrutando!</p>
+    </div>
+
+    <ng-container
+      *ngFor="let order of shoppingCart.cart.orders; let i = index"
+    >
+      <app-card-order [order]="order"></app-card-order>
+    </ng-container>
+  </main>
+  <div class="modal-footer justify-content-sm-between">
+    <div class="d-flex w-100 justify-content-between text-price border-bottom">
+      <p>Total:</p>
+      <p>{{shoppingCart.cart.total|currency}}</p>
+    </div>
+    <button (click)="goToPayment()" *ngIf="shoppingCart.cart.orders.length>0" class="btn btn-primary m-auto"
+            id="button"
+            routerLink="/container/shopping">
+      <fa-icon [icon]="faCartSuccess"/>
+      Ir a pagar
+    </button>
+  </div>
+</ng-template>
+<div class="div">
+<button (click)="open(content)" class="btn btn-primary">
+  <fa-icon [icon]="faCart"/>
+  <span class="counter" *ngIf="shoppingCart.cart.orders.length>0">{{shoppingCart.cart.orders.length}}</span>
+</button>
+
+

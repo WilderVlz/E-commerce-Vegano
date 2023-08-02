@@ -1,0 +1,69 @@
+<main *ngIf="showPlate" class="d-block d-md-none sticky-top pt-2">
+  <div [style.background-image]="plate?'url(assets/img/plates/' +plate.urlImagen + ')':''"
+       class="hero box-shadow"></div>
+
+  <div class="container">
+    <h1 class="text-title">{{plate ? plate.categoria : ''|titlecase}}</h1>
+    <h2 class="text-title">${{plate ? plate.precio : '' | currency}}</h2>
+    <p class="text-break text-truncate text-muted">{{plate ? plate.descripcion : ''}}</p>
+  </div>
+</main>
+<!-- desktop-->
+<main *ngIf="showPlate" class="d-none d-md-block py-2 mx-auto bg-dark-subtle">
+
+  <div class="container border border-1 box-shadow bg-light my-2">
+    <div class="row">
+      <div class="col-1 align-self-center">
+        <button class="btn btn-outline-dark m-0 border-0 " routerLink="/container/menu">
+          <fa-icon [icon]="faChevronLeft"/>
+        </button>
+      </div>
+      <div class="col-11 align-self-center ">
+        <h1 class="text-title m-0">{{plate ? plate.categoria : ''|titlecase}}</h1>
+      </div>
+    </div>
+    <hr>
+    <div [style.background-image]="plate?'url(assets/img/plates/' +plate.urlImagen + ')':''" class="hero"></div>
+    <h2 class="text-title py-2">${{plate ? plate.precio : ''}}</h2>
+    <section class="d-flex justify-content-between">
+      <div>
+        <app-badge [isSuccess]="true" [textSuccess]="'Vegetariano'" [textWarning]="''"/>
+        <app-badge [isSuccess]="plate?plate.vegano:false" [textSuccess]="'Vegano'" [textWarning]="'No vegano'"/>
+        <app-badge [isSuccess]="plate?plate.sinTACC:false" [textSuccess]="'Sin Tacc'" [textWarning]="'Contiene TACC'"/>
+        <app-badge [isDanger]="plate?(plate.stock===0):false" [isSuccess]="plate?(plate.stock>10):false"
+                   [textDanger]="'No stock'" [textSuccess]="'En stock'"
+                   [textWarning]="'Ultimos platos'"/>
+      </div>
+      <div>
+        <app-star-rating [rating]="plate?plate.calificacion:0"/>
+        <p class="text-muted text-end"><small>En stock:{{plate ? plate.stock : 0}}</small></p>
+      </div>
+    </section>
+
+    <p class="text-muted">{{plate ? plate.descripcion : ''}}</p>
+    <hr>
+    <div class="d-flex justify-content-between align-items-center ">
+      <app-button-counter [maxValue]="plate?plate.stock:0" [minValue]="(plate?(plate.stock>0?1:0):0)"
+                          [value]="(plate?(plate.stock>0?1:0):0)"/>
+      <button (click)="addCart()" class="btn btn-primary">Agregar a mi pedido</button>
+    </div>
+  </div>
+
+</main>
+
+
+<footer *ngIf="showPlate" class="descripcion-footer sticky-bottom bg-light d-md-none box-shadow ">
+
+  <div class="d-flex justify-content-between align-items-center">
+    <app-button-counter [maxValue]="plate?plate.stock:0" [minValue]="(plate?(plate.stock>0?1:0):0)"
+                        [value]="(plate?(plate.stock>0?1:0):0)"/>
+    <button (click)="addCart()" class="btn btn-primary">Agregar a mi pedido</button>
+  </div>
+</footer>
+
+
+<main *ngIf="!showPlate" class="min-vh-100 container text-center">
+  <h2>No se selecciono un producto</h2>
+  <a class="btn btn-primary" routerLink="/container/menu">ver menu</a>
+</main>
+

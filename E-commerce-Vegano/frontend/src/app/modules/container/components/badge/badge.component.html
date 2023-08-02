@@ -1,0 +1,8 @@
+<span [class]="isDanger?'text-bg-danger':
+                isSuccess?'text-bg-success':
+                'bg-warning-badge text-light'
+  "
+      class="badge">
+  {{isDanger ? textDanger : isSuccess ? textSuccess : textWarning }}
+</span>
+
